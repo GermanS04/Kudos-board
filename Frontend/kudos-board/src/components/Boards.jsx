@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import axios from 'axios';
 import '../styles/Boards.css'
 
@@ -7,6 +7,8 @@ const Boards = ({boardData, updateBoards}) => {
     const board = boardData;
     const API_URL = import.meta.env.VITE_API_BASE_URL;
     const deleteBoardURL = API_URL + `/boards/${board.id}`;
+
+    const [imgSrc, setImgSrc] = useState(boardData.imageURL);
 
     const onDelete = () => {
         axios.delete(deleteBoardURL)
@@ -17,7 +19,7 @@ const Boards = ({boardData, updateBoards}) => {
     return(
         <div className='board-container'>
             <div className='board-image-container'>
-                <img className='board-image' src={`https://picsum.photos/200/300?random=${Math.random()}`} />
+                <img className='board-image' src={imgSrc} alt='Board Picture' onError={() => setImgSrc('../../public/default_image.jpg')}/>
             </div>
             <h3>{board.title}</h3>
             <p>{board.category}</p>

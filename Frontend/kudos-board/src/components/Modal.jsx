@@ -11,11 +11,17 @@ const Modal = ({openModal, updateBoards}) => {
         const name = e.target.elements.name.value;
         const category = e.target.elements.category.value;
         const author = e.target.elements.author.value;
+        let image = e.target.elements.image.value;
+
+        if(!image || image.trim().length === 0){
+            image = `https://picsum.photos/200/300?random=${Math.random()}`;
+        }
 
         axios.post(postBoardURL, {
             title: name,
             category: category,
-            author: author
+            author: author,
+            imageURL: image
         }).then((response) => {updateBoards()})
         .catch((error) => {console.log(error)})
 
@@ -52,8 +58,13 @@ const Modal = ({openModal, updateBoards}) => {
                         </div>
 
                         <div>
-                            <label htmlFor='author'> Author: </label><br />
-                            <input required type="text" id='author' placeholder='Author Name' className='modal-input-option'></input><br />
+                            <label htmlFor='author'> Author: (Optional) </label><br />
+                            <input type="text" id='author' placeholder='Author Name' className='modal-input-option'></input><br />
+                        </div>
+
+                        <div>
+                            <label htmlFor='image'> Image Address: (Optional) </label><br />
+                            <input type="text" id='image' placeholder='Image URL' className='modal-input-option'></input><br />
                         </div>
 
                         <button className='modal-create-button' type='submit' >

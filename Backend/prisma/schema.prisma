@@ -19,6 +19,7 @@ model User {
   lastName String
   username String
   cards Card[]
+  password String
 }
 
 model Card {
@@ -47,4 +48,5 @@ model Board {
   category String
   author String?
   cards Card[]
+  imageURL String
 }
