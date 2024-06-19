@@ -8,7 +8,7 @@ const Boards = (props) => {
     return(
         <div className='board-container'>
             <div className='board-image-container'>
-                <img className='board-image' src='https://picsum.photos/200/300' />
+                <img className='board-image' src={`https://picsum.photos/200/300?random=${Math.random()}`} />
             </div>
             <h3>{board.title}</h3>
             <p>{board.category}</p>
