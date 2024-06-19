@@ -4,20 +4,16 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 const cors = require('cors');
 
-router.use(cors({
-    origin: ['http://localhost:5173']
-}))
-
 router.use('/', (req, res, next) => {
     next();
 })
 
-router.get('/boards', async (req, res) => {
+router.get('/', async (req, res) => {
     const boards = await prisma.board.findMany();
     res.json(boards);
 })
 
-router.post('/boards', async (req, res) => {
+router.post('/', async (req, res) => {
     const { title, category, author, cards } = req.body;
     const boards = await prisma.board.create({
         data: {
@@ -28,6 +24,16 @@ router.post('/boards', async (req, res) => {
         }
     });
     res.json(boards);
+})
+
+router.delete('/:id', async (req, res) => {
+    const id = parseInt(req.params.id);
+    const board = await prisma.board.delete({
+        where: {
+            id
+        }
+    })
+    res.json(board);
 })
 
 module.exports = router;

@@ -1,9 +1,18 @@
 import { useEffect, useState } from 'react'
-import axios from 'axios'
+import axios from 'axios';
 import '../styles/Boards.css'
 
-const Boards = (props) => {
-    const board = props.board;
+
+const Boards = ({boardData, updateBoards}) => {
+    const board = boardData;
+    const API_URL = import.meta.env.VITE_API_BASE_URL;
+    const deleteBoardURL = API_URL + `/boards/${board.id}`;
+
+    const onDelete = () => {
+        axios.delete(deleteBoardURL)
+        .then((response) => {updateBoards()})
+        .catch((error) => {console.log(error)})
+    }
 
     return(
         <div className='board-container'>
@@ -14,7 +23,7 @@ const Boards = (props) => {
             <p>{board.category}</p>
             <div className='board-buttons-container'>
                 <button className='board-view-button'>View Board</button>
-                <button className='board-delete-button'>Delete Board</button>
+                <button className='board-delete-button' onClick={onDelete}>Delete Board</button>
             </div>
         </div>
     )

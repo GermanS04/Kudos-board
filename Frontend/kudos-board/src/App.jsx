@@ -5,7 +5,7 @@ import axios from 'axios'
 import Boards from './components/Boards'
 
 function App() {
-
+  const API_URL = import.meta.env.VITE_API_BASE_URL;
   const [modalOpen, setModalOpen] = useState(false);
   const [boards, setBoards] = useState(null);
 
@@ -17,13 +17,16 @@ function App() {
     }
   }
 
-  const boardsURL = 'http://localhost:3000/boards'
+  const boardsURL = API_URL + '/boards'
 
-  useEffect(() => {
+  const getBoards = () => {
     axios.get(boardsURL).then((response) => {
       setBoards(response.data);
-      //console.log(response.data);
     })
+  }
+
+  useEffect(() => {
+    getBoards();
   }, [])
 
   return (
@@ -59,9 +62,8 @@ function App() {
         </div>
         <div className='boards-container'>
           {boards?.map((board) => {
-            console.log(board)
             return(
-              <Boards key={board.id} board={board}/>
+              <Boards key={board.id} boardData={board} updateBoards={() => getBoards()}/>
             )
           })}
         </div>
@@ -69,7 +71,7 @@ function App() {
       <footer className='footer-container'>
         © 2024 Kudoboard
       </footer>
-      {modalOpen && <Modal openModal={openModal} />}
+      {modalOpen && <Modal openModal={openModal} updateBoards={() => getBoards()} />}
     </div>
   )
 }

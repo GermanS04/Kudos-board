@@ -2,10 +2,12 @@ import { useState, useEffect } from 'react';
 import axios from 'axios'
 import '../styles/Modal.css';
 
-const Modal = ({openModal}) => {
-    const postBoardURL = 'http://localhost:3000/boards'
+const Modal = ({openModal, updateBoards}) => {
+    const API_URL = import.meta.env.VITE_API_BASE_URL;
+    const postBoardURL = API_URL + '/boards'
 
     const handleSubmit = (e) => {
+        e.preventDefault();
         const name = e.target.elements.name.value;
         const category = e.target.elements.category.value;
         const author = e.target.elements.author.value;
@@ -14,8 +16,10 @@ const Modal = ({openModal}) => {
             title: name,
             category: category,
             author: author
-        }).then((response) => {console.log(response)})
+        }).then((response) => {updateBoards()})
         .catch((error) => {console.log(error)})
+
+        openModal();
     }
 
     return (
@@ -38,8 +42,8 @@ const Modal = ({openModal}) => {
 
                         <div>
                             <label htmlFor='category'> Category: </label><br />
-                            <select required id='category' className='modal-select-option'>
-                                <option value='' selected='true' disabled>Select a Category</option>
+                            <select defaultValue='' required id='category' className='modal-select-option'>
+                                <option value='' disabled>Select a Category</option>
                                 <option value='Recent'>Recent</option>
                                 <option value='Celebration'>Celebration</option>
                                 <option value='Thank You'>Thank you</option>
@@ -52,7 +56,7 @@ const Modal = ({openModal}) => {
                             <input required type="text" id='author' placeholder='Author Name' className='modal-input-option'></input><br />
                         </div>
 
-                        <button className='modal-create-button' type='submit'>
+                        <button className='modal-create-button' type='submit' >
                             Create Board
                         </button>
                     </form>
