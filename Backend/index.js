@@ -19,6 +19,7 @@ app.get("/", (req, res, next) => {
 })
 
 app.get('/boards', boardsRoute);
+app.post('/boards', boardsRoute);
 
 
 app.listen(PORT, () => {

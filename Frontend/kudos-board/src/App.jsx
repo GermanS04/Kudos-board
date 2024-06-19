@@ -1,10 +1,13 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import Modal from './components/Modal'
+import axios from 'axios'
+import Boards from './components/Boards'
 
 function App() {
 
   const [modalOpen, setModalOpen] = useState(false);
+  const [boards, setBoards] = useState(null);
 
   const openModal = () => {
     if (modalOpen){
@@ -13,6 +16,15 @@ function App() {
       setModalOpen(true);
     }
   }
+
+  const boardsURL = 'http://localhost:3000/boards'
+
+  useEffect(() => {
+    axios.get(boardsURL).then((response) => {
+      setBoards(response.data);
+      //console.log(response.data);
+    })
+  }, [])
 
   return (
     <div className='app'>
@@ -41,9 +53,17 @@ function App() {
           </button>
         </div>
         <div className='filters-container'>
-          <button className='filter-button' onClick={() => {openModal(); console.log('open Modal')}}>
+          <button className='filter-button' onClick={() => {openModal()}}>
             Create Board
           </button>
+        </div>
+        <div className='boards-container'>
+          {boards?.map((board) => {
+            console.log(board)
+            return(
+              <Boards key={board.id} board={board}/>
+            )
+          })}
         </div>
       </main>
       <footer className='footer-container'>

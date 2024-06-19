@@ -3,21 +3,25 @@ import '../styles/Modal.css';
 
 const Modal = ({openModal}) => {
 
+    uploadForm = () => {
+
+    }
+
     // TO DO - Function to create a new board and add it to the database
 
     return (
         <div className='modal-container'>
-            <div className="modal-overlay" onClick={openModal()}>
+            <div className="modal-overlay" onClick={openModal}>
             </div>
             <div className='modal-content'>
                 <div className='modal-close-button-container'>
-                    <button className='modal-close-button' onClick={openModal()}>X</button>
+                    <button className='modal-close-button' onClick={openModal}>X</button>
                 </div>
                 <div>
                     <h2 className='title-modal'>Create a New Board</h2>
                 </div>
                 <div>
-                    <form className='modal-form'>
+                    <form className='modal-form' action={uploadeForm}>
                         <div>
                             <label htmlFor='name'> Board Name: </label><br />
                             <input type="text" id='name' placeholder='Board Name' className='modal-input-option'></input><br />
@@ -37,7 +41,7 @@ const Modal = ({openModal}) => {
 
                         <button className='modal-create-button' onClick={(e) => {
                             e.preventDefault();
-                            openModal();
+                            openModal;
                             }}>
                             Create Board
                         </button>
