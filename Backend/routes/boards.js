@@ -9,8 +9,29 @@ router.use('/', (req, res, next) => {
 })
 
 router.get('/', async (req, res) => {
-    const boards = await prisma.board.findMany();
-    res.json(boards);
+    const categoryLowerCase = req.query.category;
+    if(categoryLowerCase === 'all'){
+        const boards = await prisma.board.findMany();
+        res.json(boards);
+    } else if (categoryLowerCase === 'recent') {
+        const boards = await prisma.board.findMany({
+            orderBy: {
+                id: 'desc'
+            }
+        });
+        res.json(boards);
+    }else if (categoryLowerCase) {
+        const category = categoryLowerCase[0].toUpperCase() + categoryLowerCase.slice(1);
+        const boards = await prisma.board.findMany({
+          where: {
+            category
+          }
+        });
+        res.json(boards);
+    } else {
+        const boards = await prisma.board.findMany();
+        res.json(boards);
+    }
 })
 
 router.post('/', async (req, res) => {

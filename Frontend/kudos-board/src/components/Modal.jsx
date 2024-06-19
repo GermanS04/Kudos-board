@@ -52,7 +52,7 @@ const Modal = ({openModal, updateBoards}) => {
                                 <option value='' disabled>Select a Category</option>
                                 <option value='Recent'>Recent</option>
                                 <option value='Celebration'>Celebration</option>
-                                <option value='Thank You'>Thank you</option>
+                                <option value='Thank you'>Thank you</option>
                                 <option value='Inspiration'>Inspiration</option>
                             </select><br />
                         </div>
