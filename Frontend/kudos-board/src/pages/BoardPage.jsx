@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { useEffect, useState, useRef } from 'react'
 import axios from 'axios';
 import CreateCardModal from '../components/CreateCardModal';
+import Cards from '../components/Cards';
 import '../styles/App.css'
 import '../styles/BoardPage.css'
 
@@ -11,6 +12,7 @@ const BoardPage = () => {
     const {id} = useParams();
 
     const [boardInfo, setBoardInfo] = useState(null);
+    const [cards, setCards] = useState(null);
     const [modalOpen, setModalOpen] = useState(false);
 
     const openModal = () => {
@@ -19,12 +21,19 @@ const BoardPage = () => {
         } else {
             setModalOpen(true);
         }
-        }
+    }
+
+    const getCards = () => {
+        axios.get(API_URL + `/cards/${id}`).then((response) => {
+            setCards(response.data);
+        })
+    }
 
     useEffect(() => {
         axios.get(API_URL + `/boards/${id}`).then((response) => {
-            setBoardInfo(response.data)
+            setBoardInfo(response.data);
         })
+        getCards();
     }, [])
 
     return (
@@ -41,14 +50,18 @@ const BoardPage = () => {
                         Create Card
                     </button>
                 </div>
-                <div>
-
+                <div className='boards-container'>
+                    {cards?.map((card) => {
+                        return(
+                            <Cards key={card.id} cardData={card} updateCards={() => getCards()}/>
+                        )
+                    })}
                 </div>
             </main>
             <footer className='footer-container'>
                 © 2024 Kudoboard
             </footer>
-            {modalOpen && <CreateCardModal openModal={openModal} />}
+            {modalOpen && <CreateCardModal openModal={openModal} boardId={id} updateCards={() => getCards()}/>}
         </div>
     )
 }

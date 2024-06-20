@@ -27,6 +27,7 @@ app.get("/", (req, res, next) => {
 })
 
 app.use('/boards', boardsRoute);
+app.use('/cards', cardsRoute);
 
 
 app.listen(PORT, () => {
