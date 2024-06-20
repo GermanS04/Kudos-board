@@ -2,7 +2,6 @@
 const express = require('express'), router = express.Router();
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
-const cors = require('cors');
 
 router.use('/', (req, res, next) => {
     next();
@@ -32,6 +31,16 @@ router.get('/', async (req, res) => {
         const boards = await prisma.board.findMany();
         res.json(boards);
     }
+})
+
+router.get('/:id', async (req, res) => {
+    const id = parseInt(req.params.id);
+    const board = await prisma.board.findUnique({
+        where:{
+            id
+        }
+    })
+    res.json(board);
 })
 
 router.post('/', async (req, res) => {

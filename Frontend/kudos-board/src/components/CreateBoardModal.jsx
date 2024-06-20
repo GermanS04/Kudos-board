@@ -1,8 +1,7 @@
-import { useState, useEffect } from 'react';
 import axios from 'axios'
-import '../styles/Modal.css';
+import '../styles/CreateBoardModal.css';
 
-const Modal = ({openModal, updateBoards}) => {
+const CreateBoardModal = ({openModal, updateBoards}) => {
     const API_URL = import.meta.env.VITE_API_BASE_URL;
     const postBoardURL = API_URL + '/boards'
 
@@ -77,4 +76,4 @@ const Modal = ({openModal, updateBoards}) => {
     )
 }
 
-export default Modal;
+export default CreateBoardModal;

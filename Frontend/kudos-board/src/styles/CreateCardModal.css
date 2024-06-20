@@ -1,0 +1,37 @@
+.card-modal-content{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    overflow: auto;
+    z-index: 2;
+    padding: 1.5rem;
+    background-color: white;
+    width: 35%;
+    height: 50%;
+    border-radius: 1rem;
+    gap: 1rem;
+}
+
+.card-modal-form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: left;
+    gap: 1rem
+}
+
+.modal-form-input {
+    padding: 0.50rem;
+}
+
+.card-modal-form button{
+    padding: 0.65rem 0;
+    background-color: rgb(55, 125, 125);
+    border-radius: 0.5rem;
+    border: none;
+    color: white;
+}
+
+.card-modal-form button:hover{
+    cursor: pointer;
+}
