@@ -19,6 +19,8 @@ model User {
   lastName String
   username String
   cards Card[]
+  comments Comment[]
+  likes Like[]
   password String
 }
 
@@ -32,6 +34,7 @@ model Card {
   user User? @relation(fields: [userId], references:[id])
   userId Int?
   comments Comment[]
+  likes Like[]
   gifURL String
 }
 
@@ -40,7 +43,9 @@ model Comment {
   author String?
   content String
   card Card @relation(fields: [cardId], references:[id])
-  cardId Int @unique
+  cardId Int
+  user User? @relation(fields: [userId], references:[id])
+  userId Int?
 }
 
 model Board {
@@ -50,4 +55,12 @@ model Board {
   author String?
   cards Card[]
   imageURL String
+}
+
+model Like {
+  id Int @id @default(autoincrement())
+  user User? @relation(fields: [userId], references: [id])
+  userId Int?
+  card Card @relation(fields: [cardId], references: [id])
+  cardId Int
 }

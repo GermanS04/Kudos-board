@@ -1,0 +1,71 @@
+.comments-modal-container{
+    display: flex;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    z-index: 2;
+    top: 0;
+    left: 0;
+}
+
+.comments-modal-overlay{
+    box-sizing: border-box;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.comments-modal-content{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    overflow: auto;
+    z-index: 2;
+    background-color: white;
+    width: 70%;
+    height: 80%;
+    border-radius: 1rem;
+    gap: 1rem;
+}
+
+.comments-modal-image-container{
+    width: 50%;
+    padding: 1.5rem;
+}
+
+.comments-modal-image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 1rem;
+}
+
+.comments-modal-info-container{
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+}
+
+.comments-modal-info{
+    justify-content: center;
+    text-align: left;
+    height: 20%;
+    background-color: rgb(236, 236, 236);
+    padding: 1rem;
+}
+
+.comments-modal-comment-container{
+    height: 70%;
+    background-color: blue;
+}
+
+.comments-modal-post-comment-container{
+    height: 15%;
+    background-color: yellow;
+}

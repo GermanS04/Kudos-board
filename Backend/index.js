@@ -20,6 +20,7 @@ const boardsRoute = require('./routes/boards');
 const usersRoute = require('./routes/users');
 const cardsRoute = require('./routes/cards');
 const commentsRoute = require('./routes/comments');
+const likesRoute = require('./routes/likes')
 
 app.get("/", (req, res, next) => {
     res.send('Kudoboard API');
@@ -28,6 +29,7 @@ app.get("/", (req, res, next) => {
 
 app.use('/boards', boardsRoute);
 app.use('/cards', cardsRoute);
+app.use('/likes', likesRoute);
 
 
 app.listen(PORT, () => {

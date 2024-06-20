@@ -6,6 +6,7 @@ import CreateCardModal from '../components/CreateCardModal';
 import Cards from '../components/Cards';
 import '../styles/App.css'
 import '../styles/BoardPage.css'
+import CommentsModal from '../components/CommentsModal';
 
 const BoardPage = () => {
     const API_URL = import.meta.env.VITE_API_BASE_URL;
@@ -13,13 +14,23 @@ const BoardPage = () => {
 
     const [boardInfo, setBoardInfo] = useState(null);
     const [cards, setCards] = useState(null);
-    const [modalOpen, setModalOpen] = useState(false);
+    const [modalOpenCreateCard, setModalOpenCreateCard] = useState(false);
+    const [modalOpenCommentsCard, setModalOpenCommentsCard] = useState(false);
+    const [modalCard, setModalCard] = useState(null);
 
-    const openModal = () => {
-        if (modalOpen){
-            setModalOpen(false);
+    const openModalCreateCard = () => {
+        if (modalOpenCreateCard){
+            setModalOpenCreateCard(false);
         } else {
-            setModalOpen(true);
+            setModalOpenCreateCard(true);
+        }
+    }
+
+    const openModalCommentsCard = () => {
+        if(modalOpenCommentsCard){
+            setModalOpenCommentsCard(false);
+        } else {
+            setModalOpenCommentsCard(true);
         }
     }
 
@@ -46,14 +57,14 @@ const BoardPage = () => {
                     Welcome to {boardInfo?.title}
                 </div>
                 <div className='filters-container'>
-                    <button className='filter-button' onClick={openModal}>
+                    <button className='filter-button' onClick={openModalCreateCard}>
                         Create Card
                     </button>
                 </div>
                 <div className='boards-container'>
                     {cards?.map((card) => {
                         return(
-                            <Cards key={card.id} cardData={card} updateCards={() => getCards()}/>
+                            <Cards key={card.id} cardData={card} updateCards={() => getCards()} openModal={openModalCommentsCard} modalCard={(card) => setModalCard(card)}/>
                         )
                     })}
                 </div>
@@ -61,7 +72,8 @@ const BoardPage = () => {
             <footer className='footer-container'>
                 © 2024 Kudoboard
             </footer>
-            {modalOpen && <CreateCardModal openModal={openModal} boardId={id} updateCards={() => getCards()}/>}
+            {modalOpenCreateCard && <CreateCardModal openModal={openModalCreateCard} boardId={id} updateCards={() => getCards()}/>}
+            {modalOpenCommentsCard && <CommentsModal openModal={openModalCommentsCard} card={modalCard}/>}
         </div>
     )
 }
