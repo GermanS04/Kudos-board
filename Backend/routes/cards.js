@@ -22,13 +22,14 @@ router.get('/:id', async (req, res) => {
 })
 
 router.post('/', async (req, res) => {
-    const {title, description, owner, boardId} = req.body;
+    const {title, description, owner, boardId, gifURL} = req.body;
     const cards = await prisma.card.create({
         data: {
             title,
             description,
             owner,
-            boardId
+            boardId,
+            gifURL
         }
     })
     res.json(cards);

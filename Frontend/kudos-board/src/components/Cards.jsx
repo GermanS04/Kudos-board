@@ -7,6 +7,7 @@ const Cards = ({cardData, updateCards}) => {
     const card = cardData;
     const API_URL = import.meta.env.VITE_API_BASE_URL;
     const deleteCardURL = API_URL + `/cards/${card.id}`;
+    const [imgSrc, setImgSrc] = useState(card.gifURL)
 
     const onDelete = () => {
         axios.delete(deleteCardURL)
@@ -17,7 +18,7 @@ const Cards = ({cardData, updateCards}) => {
     return(
         <div className='board-container'>
             <div className='board-image-container'>
-                <img className='board-image' src='/default_image.jpg' alt='Card Picture'/>
+                <img className='board-image' src={imgSrc} alt='Card Picture' onError={() => setImgSrc('/default_image.jpg')}/>
             </div>
             <h3>{card.title}</h3>
             <p>{card.description}</p>

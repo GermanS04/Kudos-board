@@ -11,6 +11,7 @@ const CreateCardModal = ({openModal, boardId, updateCards}) => {
 
     const [copyText, setCopyText] = useState("");
     const [searchGIF, setSearchGIF] = useState("");
+    const [gifs, setGifs] = useState([]);
 
     const handleCopyText = (e) => {
         setCopyText(e.target.value);
@@ -31,16 +32,27 @@ const CreateCardModal = ({openModal, boardId, updateCards}) => {
         const description = e.target.elements.cardDescription.value;
         const owner = e.target.elements.cardOwner.value;
         const boardID = parseInt(boardId);
+        const gifURL = e.target.elements.cardGIF_URL.value;
 
         axios.post(postCardURL, {
             title: title,
             description: description,
             owner: owner,
-            boardId: boardID
+            boardId: boardID,
+            gifURL: gifURL
         }).then((response) => {updateCards()})
         .catch((error) => {console.log(error)})
 
         openModal();
+    }
+
+    const searchGIFs = (e) => {
+        e.preventDefault();
+        axios.get(`https://api.giphy.com/v1/gifs/search?q=${searchGIF}&api_key=${GIPHY_API_KEY}&limit=6`)
+        .then((response) => {
+            setGifs(response.data);
+        })
+        .catch((error) => {console.log(error)})
     }
 
 
@@ -57,11 +69,18 @@ const CreateCardModal = ({openModal, boardId, updateCards}) => {
                 </div>
                 <div>
                     <form className='card-modal-form' onSubmit={handleSubmit}>
-                        <input className='modal-form-input' id='cardTitle' type='text' placeholder='Enter Card Title' />
-                        <input className='modal-form-input' id='cardDescription' type='text' placeholder='Enter Card Description' />
+                        <input required className='modal-form-input' id='cardTitle' type='text' placeholder='Enter Card Title' />
+                        <input required className='modal-form-input' id='cardDescription' type='text' placeholder='Enter Card Description' />
                         <input className='modal-form-input' id='cardSearch-GIF' type='text' value={searchGIF} onChange={handleSearchText} placeholder='Search GIFs...' />
-                        <button>Search</button>
-                        <input className='modal-form-input' id='cardGIF_URL' type='text' value={copyText} onChange={handleCopyText} placeholder='Enter GIF URL' />
+                        <button onClick={searchGIFs}>Search</button>
+                        {gifs && (
+                            <div className='gif-grid'>
+                                {gifs.data?.map((gif) => (
+                                    <img className='gif-grid-img' src={gif.images.downsized.url} key={gif.id} alt={gif.title} onClick={() => setCopyText(gif.images.downsized.url)}/>
+                                ))}
+                            </div>
+                        )}
+                        <input required className='modal-form-input' id='cardGIF_URL' type='text' value={copyText} onChange={handleCopyText} placeholder='Enter GIF URL' />
                         <button onClick={copyToClipboard}>Copy GIF URL</button>
                         <input className='modal-form-input' id='cardOwner' type='text' placeholder='Enter Owner (Optional)' />
                         <button type='submit'>Create Card</button>
