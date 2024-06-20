@@ -30,6 +30,7 @@ app.get("/", (req, res, next) => {
 app.use('/boards', boardsRoute);
 app.use('/cards', cardsRoute);
 app.use('/likes', likesRoute);
+app.use('/comments', commentsRoute);
 
 
 app.listen(PORT, () => {

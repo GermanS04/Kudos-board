@@ -7,6 +7,7 @@ router.use('/', (req, res, next) => {
     next();
 })
 
+// TO DO: fix this to case insensitive & use the search here as well
 router.get('/', async (req, res) => {
     const categoryLowerCase = req.query.category;
     if(categoryLowerCase === 'all'){
