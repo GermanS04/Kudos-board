@@ -66,7 +66,6 @@
 .modal-input-option{
     width: 100%;
     height: 1.5rem;
-    padding: 0;
 }
 
 .modal-select-option{
@@ -76,10 +75,17 @@
 
 .modal-create-button{
     padding: 0.75rem 0;
-    background-color: rgb(55, 125, 125);
+    background-color: rgb(106, 80, 60);
     border-radius: 0.5rem;
     border: none;
     color: white;
+    transition: transform ease 0.3s;
+}
+
+.modal-create-button:hover{
+    transform: scale(1.05);
+    font-weight: bold;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 950px) {

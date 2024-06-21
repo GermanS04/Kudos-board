@@ -15,10 +15,11 @@
 
 .card-buttons-container button{
     border-radius: 0.5rem;
+    transition: transform ease 0.3s
 }
 
 .card-buttons-container button:hover{
-    opacity: 1;
+    transform: scale(1.1);
     cursor: pointer;
 }
 
@@ -37,6 +38,7 @@
 }
 
 .card-comment-button{
+    background-color: white;
     border: none;
     padding: 0.4rem 0.75rem;
 }
@@ -45,4 +47,11 @@
     fill: gray;
     width: 100%;
     height: 1.1rem;
+}
+
+.card-delete-button{
+    color: white;
+    padding: 0.5rem 1rem;
+    background-color: rgb(106, 80, 60);
+    border: none;
 }

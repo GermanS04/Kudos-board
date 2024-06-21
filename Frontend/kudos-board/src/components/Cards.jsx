@@ -50,7 +50,7 @@ const Cards = ({cardData, updateCards, openModal, modalCard}) => {
             </div>
             <div className='card-buttons-container'>
                 <button className='card-like-button' onClick={postLike}><FaHeart className='like-icon'/> {likes?.length}</button>
-                <button className='board-delete-button' onClick={onDelete}>Delete Card</button>
+                <button className='card-delete-button' onClick={onDelete}>Delete Card</button>
                 <button className='card-comment-button' onClick={() => {openModal(); modalCard(card)}}><BiSolidCommentDetail className='comment-icon'/></button>
             </div>
         </div>

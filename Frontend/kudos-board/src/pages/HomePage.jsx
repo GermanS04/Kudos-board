@@ -44,7 +44,7 @@ const HomePage = () => {
     return (
     <div className='app'>
         <header className='header-container'>
-        <img src={'/kudoboard_logo.png'} className="kudoboard-logo" alt="Kudoboard logo" />
+            Kudoboard
         </header>
         <main className='main-container'>
         <div className='search-bar-container'>

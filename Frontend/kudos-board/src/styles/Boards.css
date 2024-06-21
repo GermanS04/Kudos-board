@@ -3,9 +3,15 @@
 .board-container{
     width: 15rem;
     height: 45vh;
-    border: 1px solid lightgray;
     text-align: center;
     border-radius: 1rem;
+    background-color: rgb(237, 231, 225);
+    transition: transform ease 0.3s;
+}
+
+.board-container:hover{
+    transform: scale(1.05);
+    box-shadow: 0 0 10px white;
 }
 
 .board-container h3{
@@ -38,11 +44,16 @@
 
 .board-buttons-container button{
     border-radius: 0.5rem;
+    transition: transform ease 0.3s;
 }
 
 .board-buttons-container button:hover{
-    opacity: 1;
+    transform: scale(1.1);
     cursor: pointer;
+}
+
+.board-buttons-container button:active{
+    opacity: 0.5;
 }
 
 .board-view-button{
@@ -55,6 +66,6 @@
 .board-delete-button{
     color: white;
     padding: 0.5rem 1rem;
-    background-color: rgb(55, 125, 125);
+    background-color: rgb(106, 80, 60);
     border: none;
 }

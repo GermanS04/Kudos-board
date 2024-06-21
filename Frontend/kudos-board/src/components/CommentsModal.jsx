@@ -62,7 +62,7 @@ const CommentsModal = ({openModal, card}) => {
                 </div>
                 <div className='comments-modal-info-container'>
                     <div className='comments-modal-info'>
-                        <h3>{card.title}</h3>
+                        <h3>Title: {card.title}</h3>
                         <p>Owner: {owner}</p>
                         <div className='comments-modal-description'>
                             <p>{card.description}</p>

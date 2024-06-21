@@ -9,6 +9,8 @@
 
 .main-container{
   padding-bottom: 7.5vh;
+  background-color: rgb(177, 152, 128);
+  min-height: 70vh;
 }
 
 .header-container{
@@ -17,6 +19,10 @@
   align-items: center;
   height: 15vh;
   width: 100vw;
+  background-color: rgb(106, 80, 60);
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
 }
 
 .kudoboard-logo {
@@ -39,6 +45,21 @@
   background-color: rgb(250, 250, 250);
   border: 1px solid rgb(235, 235, 235);
   box-shadow: 0 0 2px rgb(235, 235, 235);
+  border-radius: 5rem;
+  transition: all ease 0.3s;
+}
+
+.search-bar:focus {
+  outline: none;
+  background-color: rgb(106, 80, 60);
+  transform: scale(1.05);
+  color: white;
+  font-weight: bold;
+}
+
+.search-bar:focus::placeholder {
+  color: white;
+  font-weight: bold;
 }
 
 .filters-container{
@@ -55,12 +76,14 @@
   background-color: rgb(250, 250, 250);
   border: 1px solid rgb(235, 235, 235);
   box-shadow: 0 0 2px rgb(235, 235, 235);
-  transition: transform ease 0.3s;
+  transition: transform ease 0.3s, color ease 0.3s, background-color ease 0.3s;
   border-radius: 0.25rem;
 }
 
 .filter-button:hover{
   cursor: pointer;
+  background-color: rgb(106, 80, 60);
+  color: white;
   transform: scale(1.1);
 }
 
@@ -80,10 +103,10 @@
   display: flex;
   align-items: center;
   bottom: 0;
-  background-color: rgb(155, 190, 190);
   height: 7.5vh;
   width: 100vw;
   color: white;
+  background-color: rgb(156, 133, 112);
 }
 
 .footer-container p{
