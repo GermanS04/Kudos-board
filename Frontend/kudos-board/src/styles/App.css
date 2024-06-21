@@ -25,7 +25,7 @@
 
 .kudoboard-logo {
   object-fit: contain;
-  width: 15vw;
+  width: 15rem;
   height: 100%;
 }
 
@@ -83,7 +83,11 @@
   bottom: 0;
   background-color: rgb(155, 190, 190);
   height: 7.5vh;
-  width: 100%;
-  padding: 0 2rem;
+  width: 100vw;
   color: white;
+}
+
+.footer-container p{
+  margin: 0;
+  padding: 0 2rem;
 }

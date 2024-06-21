@@ -1,3 +1,27 @@
+
+.card-description-container{
+    max-height: 15%;
+    overflow: auto;
+}
+
+.card-buttons-container{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.card-buttons-container button{
+    border-radius: 0.5rem;
+}
+
+.card-buttons-container button:hover{
+    opacity: 1;
+    cursor: pointer;
+}
+
 .card-like-button {
     display: flex;
     align-items: center;

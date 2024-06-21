@@ -83,7 +83,9 @@ const HomePage = () => {
         </div>
         </main>
         <footer className='footer-container'>
-        © 2024 Kudoboard
+            <p>
+                © 2024 Kudoboard
+            </p>
         </footer>
         {modalOpen && <CreateBoardModal openModal={openModal} updateBoards={() => getBoards()} />}
     </div>

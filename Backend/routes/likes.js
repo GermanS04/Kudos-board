@@ -24,9 +24,9 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
     const {cardId} = req.body;
-    const likes = await prisma.likes.create({
+    const likes = await prisma.like.create({
         data: {
-            cardId: cardId
+            cardId
         }
     })
 

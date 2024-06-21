@@ -5,3 +5,20 @@
     font-weight: bold;
     margin-top: 2rem;
 }
+
+.back-icon-container{
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    top: 1rem;
+    left: 1rem;
+    font-size: 1.1rem;
+    text-decoration: none;
+    color: black;
+}
+
+.back-icon{
+    width: 2.5rem;
+    height: 2.5rem;
+}

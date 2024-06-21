@@ -7,24 +7,25 @@ router.use('/', (req, res, next) => {
     next();
 })
 
-// TO DO: fix this to case insensitive & use the search here as well
 router.get('/', async (req, res) => {
-    const categoryLowerCase = req.query.category;
-    if(categoryLowerCase === 'all'){
+    const category = req.query.category;
+    if(category === 'all'){
         const boards = await prisma.board.findMany();
         res.json(boards);
-    } else if (categoryLowerCase === 'recent') {
+    } else if (category === 'recent') {
         const boards = await prisma.board.findMany({
             orderBy: {
                 id: 'desc'
             }
         });
         res.json(boards);
-    }else if (categoryLowerCase) {
-        const category = categoryLowerCase[0].toUpperCase() + categoryLowerCase.slice(1);
+    }else if (category) {
         const boards = await prisma.board.findMany({
           where: {
-            category
+            category: {
+                contains: category,
+                mode: 'insensitive'
+            }
           }
         });
         res.json(boards);
@@ -60,11 +61,6 @@ router.post('/', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
     const id = parseInt(req.params.id);
-    const cards = await prisma.card.deleteMany({
-        where: {
-            boardId: id
-        }
-    })
     const board = await prisma.board.delete({
         where: {
             id
