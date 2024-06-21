@@ -48,3 +48,10 @@
   object-fit: cover;
   border-radius: 10px;
 }
+
+@media screen and (max-width: 950px) {
+    .card-modal-content{
+        width: 80vw;
+        height: 70vh;
+    }
+}

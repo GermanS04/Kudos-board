@@ -63,14 +63,16 @@ const CommentsModal = ({openModal, card}) => {
                 <div className='comments-modal-info-container'>
                     <div className='comments-modal-info'>
                         <h3>{card.title}</h3>
-                        <p>{card.description}</p>
                         <p>Owner: {owner}</p>
+                        <div className='comments-modal-description'>
+                            <p>{card.description}</p>
+                        </div>
                     </div>
                     <div className='comments-modal-comment-container-container'>
                         <div className='comments-modal-comment-container'>
                         { comments?.map((comment) => {
                             return(
-                                <Comments key={card.id} commentData={comment} />
+                                <Comments key={comment.id} commentData={comment} />
                             )
                         })}
                         </div>

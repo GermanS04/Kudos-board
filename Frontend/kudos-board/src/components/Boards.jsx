@@ -10,12 +10,23 @@ const Boards = ({boardData, updateBoards}) => {
     const deleteBoardURL = API_URL + `/boards/${board.id}`;
 
     const [imgSrc, setImgSrc] = useState(boardData.imageURL);
+    const [owner, setOwner] = useState(boardData.author);
 
     const onDelete = () => {
         axios.delete(deleteBoardURL)
         .then((response) => {updateBoards()})
         .catch((error) => {console.log(error)})
     }
+
+    const checkOwner = () => {
+        if(boardData.author === ""){
+            setOwner("Anonymous")
+        }
+    }
+
+    useEffect(() => {
+        checkOwner();
+    }, [owner])
 
     return(
         <div className='board-container'>
@@ -24,6 +35,7 @@ const Boards = ({boardData, updateBoards}) => {
             </div>
             <h3>{board.title}</h3>
             <p>{board.category}</p>
+            <p>Author: {owner}</p>
             <div className='board-buttons-container'>
                 <Link to={`/board/${boardData.id}`}>
                     <button className='board-view-button'>View Board</button>

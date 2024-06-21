@@ -9,11 +9,11 @@
 }
 
 .board-container h3{
-    margin: 1rem 0 0 0;
+    margin: 1vh 0 0 0;
 }
 
 .board-container p{
-    margin: 1rem 0 0 0;
+    margin: 1vh 0 0 0;
 }
 
 .board-image-container{
@@ -33,7 +33,7 @@
     justify-content: center;
     align-items: center;
     gap: 0.5rem;
-    margin-top: 2rem;
+    margin-top: 1vh;
 }
 
 .board-buttons-container button{

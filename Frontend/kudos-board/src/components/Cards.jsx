@@ -33,9 +33,11 @@ const Cards = ({cardData, updateCards, openModal, modalCard}) => {
         .catch((error) => {console.log(error)})
     }
 
+
     useEffect(() => {
         getLikes();
     }, [])
+
 
     return(
         <div className='board-container'>

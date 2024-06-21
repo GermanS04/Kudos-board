@@ -29,8 +29,8 @@
     z-index: 2;
     padding: 1.5rem;
     background-color: white;
-    width: 25%;
-    height: 50%;
+    width: 25vw;
+    height: 50vh;
     border-radius: 1rem;
     gap: 1rem;
 }
@@ -80,4 +80,11 @@
     border-radius: 0.5rem;
     border: none;
     color: white;
+}
+
+@media screen and (max-width: 950px) {
+    .modal-content{
+        width: 80vw;
+        height: 50vh;
+    }
 }

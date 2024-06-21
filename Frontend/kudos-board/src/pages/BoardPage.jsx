@@ -53,7 +53,6 @@ const BoardPage = () => {
         <div className='app'>
             <Link className='back-icon-container' to={'/'}>
                 <IoIosArrowBack className='back-icon' />
-                <p>Go Back</p>
             </Link>
             <header className='header-container'>
                 <img src={'/kudoboard_logo.png'} className="kudoboard-logo" alt="Kudoboard logo" />
