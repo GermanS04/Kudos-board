@@ -6,8 +6,8 @@ import copy from "copy-to-clipboard";
 
 const CreateCardModal = ({openModal, boardId, updateCards}) => {
     const GIPHY_API_KEY = import.meta.env.VITE_GIPHY_API_KEY;
-    const API_URL = 'https://kudos-board-s5l5.onrender.com';
-    const postCardURL = API_URL + '/cards'
+    const API_URL = import.meta.env.VITE_API_BASE_URL;
+    const postCardURL = `${API_URL}/cards`
 
     const [copyText, setCopyText] = useState("");
     const [searchGIF, setSearchGIF] = useState("");

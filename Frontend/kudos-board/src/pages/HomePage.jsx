@@ -19,7 +19,7 @@ const HomePage = () => {
     }
     }
 
-    const boardsURL = 'https://kudos-board-s5l5.onrender.com' + '/boards'
+    const boardsURL = `${API_URL}/boards`
 
     const getBoards = () => {
     if(category){

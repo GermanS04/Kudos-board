@@ -11,7 +11,7 @@ import { IoIosArrowBack } from "react-icons/io";
 
 
 const BoardPage = () => {
-    const API_URL = 'https://kudos-board-s5l5.onrender.com';
+    const API_URL = import.meta.env.VITE_API_BASE_URL;
     const {id} = useParams();
 
     const [boardInfo, setBoardInfo] = useState(null);
@@ -37,13 +37,13 @@ const BoardPage = () => {
     }
 
     const getCards = () => {
-        axios.get(API_URL + `/cards/${id}`).then((response) => {
+        axios.get(`${API_URL}/cards/${id}`).then((response) => {
             setCards(response.data);
         })
     }
 
     useEffect(() => {
-        axios.get(API_URL + `/boards/${id}`).then((response) => {
+        axios.get(`${API_URL}/boards/${id}`).then((response) => {
             setBoardInfo(response.data);
         })
         getCards();
