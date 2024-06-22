@@ -41,10 +41,14 @@ Deployed Application: [https://kudos-board-1-csq0.onrender.com/]
 
 
 ### Walkthrough Video
-
-`TODO://` Add the embedded URL code to your animated app walkthrough below, `ADD_EMBEDDED_CODE_HERE`. Make sure the video or gif actually renders and animates when viewing this README. (🚫 Remove this paragraph after adding walkthrough video)
-
-`ADD_EMBEDDED_CODE_HERE`
+<div>
+    <a href="https://www.loom.com/share/9fb6928e4d2c462cad0faa4e5de63758">
+      <p>KudoBoard Project Video</p>
+    </a>
+    <a href="https://www.loom.com/share/9fb6928e4d2c462cad0faa4e5de63758">
+      <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/9fb6928e4d2c462cad0faa4e5de63758-with-play.gif">
+    </a>
+  </div>
 
 ### Reflection
 
@@ -58,7 +62,7 @@ If I had more time I would have thought more in detailed the responsiveness of t
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-
+I notice that one of my peers for the comment section did a new page, I think I would like to try that because it has more space than doing it in a modal.
 
 ### Open-source libraries used
 
