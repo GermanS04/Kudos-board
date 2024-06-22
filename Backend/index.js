@@ -12,7 +12,7 @@ const dotenv = require('dotenv').config()
 app.use(express.json());
 
 app.use(cors({
-    origin: [process.env.FRONT_URL],
+    origin: ['https://kudos-board-1-csq0.onrender.com'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
