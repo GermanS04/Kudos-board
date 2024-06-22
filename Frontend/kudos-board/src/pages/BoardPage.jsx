@@ -11,7 +11,7 @@ import { IoIosArrowBack } from "react-icons/io";
 
 
 const BoardPage = () => {
-    const API_URL = import.meta.env.VITE_API_BASE_URL;
+    const API_URL = 'https://kudos-board-s5l5.onrender.com';
     const {id} = useParams();
 
     const [boardInfo, setBoardInfo] = useState(null);

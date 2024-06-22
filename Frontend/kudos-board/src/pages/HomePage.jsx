@@ -41,8 +41,6 @@ const HomePage = () => {
     getBoards();
     }, [category])
 
-    console.log(boardsURL)
-
     return (
     <div className='app'>
         <header className='header-container'>

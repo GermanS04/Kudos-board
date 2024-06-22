@@ -7,7 +7,7 @@ import '../styles/Cards.css'
 
 const Cards = ({cardData, updateCards, openModal, modalCard}) => {
     const card = cardData;
-    const API_URL = import.meta.env.VITE_API_BASE_URL;
+    const API_URL = 'https://kudos-board-s5l5.onrender.com';
     const deleteCardURL = API_URL + `/cards/${card.id}`;
     const getLikesURL = API_URL + `/likes/${card.id}`;
     const postLikesURL = API_URL + '/likes'

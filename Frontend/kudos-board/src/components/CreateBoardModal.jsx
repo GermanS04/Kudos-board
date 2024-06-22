@@ -2,7 +2,7 @@ import axios from 'axios'
 import '../styles/CreateBoardModal.css';
 
 const CreateBoardModal = ({openModal, updateBoards}) => {
-    const API_URL = import.meta.env.VITE_API_BASE_URL;
+    const API_URL = 'https://kudos-board-s5l5.onrender.com';
     const postBoardURL = API_URL + '/boards'
 
     const handleSubmit = (e) => {
